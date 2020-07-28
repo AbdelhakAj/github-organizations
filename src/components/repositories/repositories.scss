@@ -1,0 +1,24 @@
+.repository {
+  &:hover {
+    background-color: #f4f4f4;
+  }
+  &-language-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    align-self: center;
+  }
+
+  &-icon {
+    margin-right: 8px;
+  }
+
+  &-details {
+    padding: 16px 0 0 0;
+    > div {
+      margin-right: 24px;
+    }
+  }
+}

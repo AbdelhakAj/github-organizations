@@ -1,0 +1,21 @@
+.organization {
+  &-header {
+    margin-bottom: 60px;
+  }
+
+  &-avatar {
+    width: 160px;
+    height: 160px;
+  }
+
+  &-icon {
+    display: inline;
+    margin-right: 12px;
+  }
+
+  &-location,
+  &-website {
+    display: inline-block;
+    margin: 4px;
+  }
+}
