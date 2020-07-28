@@ -1,22 +1,18 @@
 import React from "react";
+import { Router } from "@reach/router";
 
-<<<<<<< HEAD
 import Organization from "../organization";
-=======
 import LandingPage from "../landing-page";
->>>>>>> landing-page
 
 import "./app.scss";
 
 function App() {
   return (
-<<<<<<< HEAD
-    <div className="app bg-gray-300">
-      <Organization />
-=======
-    <div className="app bg-gray-200">
-      <LandingPage onSearch={console.log} />
->>>>>>> landing-page
+    <div className="app">
+      <Router>
+        <LandingPage path="/" />
+        <Organization path="/organization/:orgLogin" />
+      </Router>
     </div>
   );
 }

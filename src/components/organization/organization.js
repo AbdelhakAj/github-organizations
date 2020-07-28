@@ -29,6 +29,9 @@ const GET_ORG_INFO = gql`
                 }
               }
             }
+            parent {
+              nameWithOwner
+            }
             licenseInfo {
               name
             }
@@ -51,13 +54,17 @@ const GET_ORG_INFO = gql`
   }
 `;
 
-const Organization = ({}) => {
+const Organization = ({ orgLogin }) => {
   const { loading, error, data, fetchMore } = useQuery(GET_ORG_INFO, {
-    variables: { login: "impraise", after: null },
+    variables: { login: orgLogin, after: null },
   });
   console.log("data", data);
 
-  if (loading) return <p> Loading ...</p>;
+  if (loading || !data) return <p className="text-center"> Loading ... </p>;
+  if (error)
+    return (
+      <p className="text-red-700 m-4 text-center">something went wrong !</p>
+    );
 
   const {
     avatarUrl,
@@ -67,11 +74,11 @@ const Organization = ({}) => {
     repositories,
   } = data.organization;
   return (
-    <div className="organization py-16 ">
-      <div className="container mx-auto bg-white rounded-lg">
-        <div className="organization-header flex items-center ">
+    <div className="organization  py-16 ">
+      <div className="sm:container mx-auto bg-white rounded-lg">
+        <div className="organization-header sm:flex xs:text-center sm:text-left items-center ">
           <img
-            className="organization-avatar"
+            className="organization-avatar xs:m-auto sm:m-0"
             src={avatarUrl}
             alt="Avatar Url"
           />
